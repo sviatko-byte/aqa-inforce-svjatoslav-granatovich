@@ -1,0 +1,50 @@
+[tool.poetry]
+name = "aqa-inforce-svjatoslav-granatovich"
+version = "0.1.0"
+description = "Automated UI and API tests"
+authors = ["Sviatoslav Granatovich <your_email@example.com>"]
+readme = "README.md"
+packages = [{ include = "src" }]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+
+# UI
+selene = "^2.0.0"
+selenium = "^4.25.0"
+
+# API
+requests = "^2.32.3"
+
+# Testing
+pytest = "^8.0.0"
+pytest-xdist = "^3.6.1"
+pytest-html = "^4.1.1"
+pytest-rerunfailures = "^12.0.1"
+
+# Allure
+allure-pytest = "^2.13.5"
+
+# Utils
+python-dotenv = "^1.0.1"
+
+[tool.poetry.group.dev.dependencies]
+black = "^24.0.0"
+flake8 = "^7.0.0"
+isort = "^5.13.2"
+
+[tool.black]
+line-length = 100
+target-version = ['py310']
+
+[tool.isort]
+profile = "black"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.pytest.ini_options]
+addopts = "-q"
+testpaths = ["tests"]
+pythonpath = ["src"]
