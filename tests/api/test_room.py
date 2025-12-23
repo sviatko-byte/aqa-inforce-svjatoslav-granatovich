@@ -1,4 +1,4 @@
-from client import unique_room_payload, updated_room_payload, booking_payload
+from src.api.client import unique_room_payload, updated_room_payload, booking_payload
 
 
 def test_create_and_verify_room(admin_client):
