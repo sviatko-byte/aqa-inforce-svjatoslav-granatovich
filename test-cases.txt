@@ -1,0 +1,85 @@
+TC_UI_01 – Book a room with valid data
+
+Title: Verify that a room can be booked with valid data
+
+Priority:
+Severity: Critical
+
+Preconditions:
+
+The room is available for the selected dates
+
+
+
+| Step | Action                                                                          | Expected Result                                                |
+| ---- | ------------------------------------------------------------------------------- | -------------------------------------------------------------- |
+| 1    | Open [https://automationintesting.online/]                                      | Home page is successfully loaded                               |
+| 2    | Scroll to the **Rooms** section (or click **Rooms** in the header)              | Rooms list is visible                                          |
+| 3    | Click **Book this room** button                                                 | Room booking page is opened                                    |
+| 4    | Select a valid **Check-in date** (today + 1 day)                                | Check-in date is selected and displayed correctly              |
+| 5    | Select a valid **Check-out date** (check-in + 2 days)                           | Check-out date is selected and displayed correctly             |
+| 6    | Click **Reserve Now** button                                                    | Modal with contact details is displayed                        |
+| 7    | Enter a valid **First Name**                                                    | First name field accepts the input                             |
+| 8    | Enter a valid **Last Name**                                                     | Last name field accepts the input                              |
+| 9    | Enter a valid **Email**                                                         | Email field accepts the input and no validation error is shown |
+| 10   | Enter a valid **Phone**                                                         | Phone field accepts the input                                  |
+| 11   | Verify **Price Summary** information                                            | Price summary is displayed correctly                           |
+| 12   | Click **Reserve Now** button                                                    | Booking confirmation window with selected dates is displayed   |
+| 13   | Check confirmation email                                                        | Confirmation email is received                                 |
+| 14   | Log in as admin user and verify booking                                         | Booking is successfully created in the admin panel             |
+
+
+
+TC_UI_02 – Book a room with invalid data
+
+Title: Verify that a room cannot be booked with invalid data
+
+Priority:
+Severity: Major
+
+Preconditions:
+
+The room is available for the selected dates
+
+| Step | Action                                                                          | Expected Result                                              |
+| ---- | ------------------------------------------------------------------------------- | ------------------------------------------------------------ |
+| 1    | Open [https://automationintesting.online/]                                      | Home page is successfully loaded                             |
+| 2    | Scroll to the **Rooms** section (or click **Rooms** in the header)              | Rooms list is visible                                        |
+| 3    | Click **Book this room** button                                                 | Room booking page is opened                                  |
+| 4    | Select a valid **Check-in date** (today + 1 day)                                | Check-in date is selected and displayed correctly            |
+| 5    | Select a valid **Check-out date** (check-in + 2 days)                           | Check-out date is selected and displayed correctly           |
+| 6    | Click **Reserve Now** button                                                    | Modal with contact details is displayed                      |
+| 7    | Leave **First Name** field empty                                                | Field remains empty, no validation message is shown                                                                                                                                                                                               |
+| 8    | Enter invalid **Last Name** (less than 3 characters or more than 30 characters) | Invalid value is entered, no validation message is shown                                                                                                                                                                                          |
+| 9    | Enter invalid **Email** (e.g. testemail.com or leave empty)                     | Invalid value is entered, no validation message is shown                                                                                                                                                                                          |
+| 10   | Enter invalid **Phone** (less than 11 or more than 21 digits, or letters)       | Invalid value is entered, no validation message is shown                                                                                                                                                                                          |
+| 11   | Verify **Price Summary** information                                            | Price summary is displayed correctly                                                                                                                                                                                                              |
+| 12   | Click **Reserve Now** button                                                    | Form is submitted and validation is triggered                                                                                                                                                                                                     |
+| 13   | Verify validation messages                                                      | Validation messages are displayed: **"Firstname should not be blank"** **"Lastname should not be blank"** or **"size must be between 3 and 30"** **"must not be empty"** (Email) **"size must be between 11 and 21"** (Phone) |
+
+
+TC_UI_03 – Earlier booked dates are unavailable
+
+Title: Verify that earlier booked dates are shown as unavailable
+
+Priority:
+Severity: Critical
+
+Preconditions:
+
+A room exists
+The room has at least one existing booking for specific dates
+
+| Step | Action                                                                          | Expected Result                                                        |
+| ---- | ------------------------------------------------------------------------------- | ---------------------------------------------------------------------- |
+| 1    | Open [https://automationintesting.online/]                                      | Home page is successfully loaded                                       |
+| 2    | Locate **Check Availability & Book Your Stay** section on the main page         | Availability form is visible                                           |
+| 3    | Click on **Check-in date** field                                                | Date picker is displayed                                               |
+| 4    | Identify dates that were previously booked                                      | Previously booked dates are shown as unavailable (disabled/greyed out) |
+| 5    | Attempt to select a previously booked **Check-in date**                         | Date cannot be selected                                                |
+| 6    | Attempt to select a previously booked **Check-out date**                        | Date cannot be selected                                                |
+| 7    | Select an available **Check-in date**                                           | Available date is selected successfully                                |
+| 8    | Select an available **Check-out date**                                          | Available date is selected successfully                                |
+| 9    | Click **Check Availability** button                                             | User is navigated to available rooms list                              |
+| 10   | Click **Book this room** button                                                 | Room booking page is opened                                            |
+| 11   | Verify selected dates                                                           | Selected dates match the dates chosen on the main page                 |
