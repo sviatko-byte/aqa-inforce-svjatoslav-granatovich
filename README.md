@@ -10,8 +10,8 @@ Prepare local environment
 ---
 * Clone the project to your local machine and navigate to the project directory:
 ```shell
-git 
-cd 
+git git@github.com:sviatko-byte/aqa-inforce-svjatoslav-granatovich.git
+cd aqa-inforce-svjatoslav-granatovich
 
 ```
 * Install and setup virtualenv for the project:
